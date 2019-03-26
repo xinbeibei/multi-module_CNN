@@ -3,7 +3,7 @@
 These scripts generate results in our manuscript entitled "". In this work, we worked with four sequence-based CNN models and four network interpretation methods.
 [insert a graph here]. Four network interpretation methods are .... Our goal of this work is to ... We also have case studies in eight Exd-Hox heterodimers, with SELEX-seq data deposited in ... 
 
-![Architecture and interpretation of multi-module CNN models](https://github.com/xinbeibei/multi-module_CNN/master/figure1.jpg)
+![Architecture and interpretation of multi-module CNN models](multi-module_CNN/figure1.jpg)
 
 
 ## Dependencies
