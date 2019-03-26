@@ -4,12 +4,11 @@ These scripts generate results in our manuscript entitled "Unraveling of transcr
 
 <img src="https://github.com/xinbeibei/multi-module_CNN/blob/master/Picture1.png" width=800 />
 
-We systematically evaluated the strategies to handle DNA sequence orientations in sequence-based CNN models, they are CNN (RC model), CNN (canonical), CNN (canonical, RC augmented), and CNN (canonical, double sample) models. 
+After collecting SELEX-seq data for eight Exd-Hox heterodimers in Drosophila, we systematically evaluated the strategies to handle DNA sequence orientations in sequence-based CNN models, they are CNN (RC model), CNN (canonical), CNN (canonical, RC augmented), and CNN (canonical, double sample) models. 
 
 <img src="https://github.com/xinbeibei/multi-module_CNN/blob/master/Picture3A.png" width=300 />
 
-with four sequence-based CNN models and four network interpretation methods.
-[insert a graph here]. Four network interpretation methods are .... Our goal of this work is to ... We also have case studies in eight Exd-Hox heterodimers, with SELEX-seq data deposited in ... 
+Based on well-trained models, we evaluated four interpretation methods: Gradient*input, DeconvNet, DeepLIFT, and in silico mutagenesis (ISM). We found that reverse-complement weight sharing CNN models, together with ISM interpretation mehotd, are robust and accurate approaches to model binding specificity of eight Exd-Hox heterodimers and validate their in vivo binding events on the *svb* enhancer. 
 
 ## Dependencies
 
