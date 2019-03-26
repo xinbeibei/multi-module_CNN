@@ -2,7 +2,7 @@
 
 These scripts generate results in our manuscript entitled "Unraveling of transcription factor-DNA binding mechanisms through interpretable multi-module deep learning model". In this work, we built CNN models to study transcription factor (TF)-DNA binding both in vitro and in vivo. After well-performed models were trained, we interpreted binding mechanisms through network interpretation methods. The workflow is as follows: 
 
-<img src="https://github.com/xinbeibei/multi-module_CNN/blob/master/Picture1.png" width=1000 />
+<img src="https://github.com/xinbeibei/multi-module_CNN/blob/master/Picture1.png" width=800 />
 
 We systematically evaluated the strategies to handle DNA sequence orientations in sequence-based CNN models, they are CNN (RC model), CNN (canonical), CNN (canonical, RC augmented), and CNN (canonical, double sample) models. 
 
