@@ -64,6 +64,7 @@ def main():
 
             util.fitler2motif(outdir, outdir + "/best_perf.txt", onehot_tr, seqs_tr, y_tr, \
             get_meme=False, align_to_one_filter=True, filter_id=3, use_revcomp=True)
+            
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
     if not os.path.exists(directory):
