@@ -6,7 +6,7 @@ These scripts generate results in our manuscript entitled "Unraveling of transcr
 
 We systematically evaluated the strategies to handle DNA sequence orientations in sequence-based CNN models, they are CNN (RC model), CNN (canonical), CNN (canonical, RC augmented), and CNN (canonical, double sample) models. 
 
-![Figure3A](Picture3A.png = 250x)
+<img src="https://github.com/xinbeibei/multi-module_CNN/blob/master/Picture3A.png" width=200 />
 
 with four sequence-based CNN models and four network interpretation methods.
 [insert a graph here]. Four network interpretation methods are .... Our goal of this work is to ... We also have case studies in eight Exd-Hox heterodimers, with SELEX-seq data deposited in ... 
