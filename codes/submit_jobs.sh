@@ -1,5 +1,10 @@
 #!/bin/sh
 
+for seq in WT mut1 mut2 mut3 mut12 site1 site2 site3A site3B site3C site3D site3E
+do
+	cp /home/bxin/Documents/low_affinity/viz_data/long_low_affinity_$seq\_short_seqs.h5 ../data/interpret_seq/
+done
+
 ############   train and test models   ##################
 # python train_CNN_SELEX.py RCmodel --steps train,test --tfs Scr,Ubx,Antp,Pb --lr_file lr_file 
 # python train_CNN_SELEX.py RCmodel --steps train,test --tfs Dfd,AbdA,AbdB,Lab --lr_file lr_file 
@@ -34,14 +39,13 @@
 
 
 ############### interpret models ################3
-for seq in AATGATTAATTGCT AATGATTGATTACC ATGATTTATTACCC
-do
-for method in GradientTimesInput ISM DeconvNet
-do
-	python interpret_CNN_SELEX.py RCmodel $method --interpret_file /home/bxin/Documents/low_affinity/viz_data/$seq.h5 --tfs Ubx --lr_file ../out/SELEX_RCmodel/Ubx/train_perf.txt
-done
-done
-
+# for seq in AATGATTAATTGCT AATGATTGATTACC ATGATTTATTACCC
+# do
+# for method in GradientTimesInput ISM DeconvNet
+# do
+# 	python interpret_CNN_SELEX.py RCmodel $method --interpret_file /home/bxin/Documents/low_affinity/viz_data/$seq.h5 --tfs Ubx --lr_file ../out/SELEX_RCmodel/Ubx/train_perf.txt
+# done
+# done
 
 ##for figure 5A
 # for tf in Scr Lab Ubx

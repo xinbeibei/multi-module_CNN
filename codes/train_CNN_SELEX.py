@@ -56,12 +56,11 @@ def main():
         if "align" in args.steps:
             print ("------------align sequences:"+ tf + "----------------")
             onehot_tr, seqs_tr, y_tr = read_data(datadir + args.mode + "/" + tf + "/" + tf + "_train.h5" )
-#            onehot_test, seqs_test, y_test = read_data(datadir + args.mode + "/" + tf + "/" + tf + "_test.h5" ) 
             
-#            util.fitler2motif(outdir, outdir + "/best_perf.txt", onehot_tr, seqs_tr, y_tr, onehot_test, seqs_test, y_test)
-#            util.fitler2motif(outdir, outdir + "/best_perf.txt", onehot_tr, seqs_tr, y_tr, onehot_test, seqs_test, y_test, \
-#            get_meme=False, align_to_one_filter=True, filter_id=3, use_revcomp=True)
+            #first get the .meme file for clustering
+            util.fitler2motif(outdir, outdir + "/best_perf.txt", onehot_tr, seqs_tr, y_tr)
 
+            #then pick a filter that used to align, here filter_id equals 3
             util.fitler2motif(outdir, outdir + "/best_perf.txt", onehot_tr, seqs_tr, y_tr, \
             get_meme=False, align_to_one_filter=True, filter_id=3, use_revcomp=True)
             
