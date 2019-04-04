@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 import CNN_utils as util
 
-datadir = "../"
+datadir = "../data/ENCODE/"
 def main():
     args = loadargs()
     ensure_dir(args.outdir)  

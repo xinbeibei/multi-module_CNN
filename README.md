@@ -65,19 +65,39 @@ done
 done 
 ```
 
-4. After training a CNN model, align training data with one certain motif scanner, and create either a position weight matrix or YR logo. Here we use Exd-Ubx and CNN (canonical) model as an example. 
+4. After training a CNN model, align training data with one certain motif scanner, and create either a position weight matrix (PWM) or YR logo. Here we use Exd-Ubx and CNN (canonical, RCaugmented) model as an example. 
 
 ```sh
-#First step is to find out which motif scanner has largest information content.
-python train_CNN_SELEX.py canonical --steps align --tfs Ubx
+# First step is to find out which motif scanner has largest information content.
+python train_CNN_SELEX.py RCaugmented --steps align --tfs Ubx
+cd ../out/SELEX_RCaugmented/Ubx
 matrix-clustering -v 1 -max_matrices 300 -matrix ubx filters_0,0.001,0.0003.meme meme -hclust_method average -calc sum -title 'ubx' -metric_build_tree 'Ncor' -lth w 5 -lth cor 0.6 -lth Ncor 0.4 -quick -label_in_tree name -return json,heatmap -o ./matrix-clustering 2> ./matrix-clustering_err.txt
 
 sort -nk7 ./matrix-clustering_tables/pairwise_compa_matrix_descriptions.tab > test
 
-#second step: set align_to_one_filter=True, and get aligned sequences based on one filter
-python train_CNN_SELEX.py canonical --steps align --tfs Ubx
+# Second step: set align_to_one_filter=True, and get aligned sequences based on one filter
+cd ../../../../codes
+python train_CNN_SELEX.py RCaugmented --steps align --tfs Ubx
+cd ../out/SELEX_RCaugmented/Ubx
 sort -nk2 aligned_0,0.001,0.0003_filter3.txt > aligned_0,0.001,0.0003_filter3_sorted.txt
+
+# Third step: YR coding of high-affinity and low-affinity BSS
+head -n10000 aligned_0,0.001,0.0003_filter3_sorted.txt | awk '{print $1}' - | sed s/N/n/g - > aligned_0,0.001,0.0003_filter3_low.txt
+tail -n10000 aligned_0,0.001,0.0003_filter3_sorted.txt | awk '{print $1}' - | sed s/N/n/g - > aligned_0,0.001,0.0003_filter3_high.txt
+python ../../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_low.txt aligned_0,0.001,0.0003_filter3_low_YRcodes.txt
+python ../../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_high.txt aligned_0,0.001,0.0003_filter3_high_YRcodes.txt
+
+# Fourth step: visualization
+We used the WebLogo 3 online website (http://weblogo.threeplusone.com/create.cgi) to plot PWM and YR logos. For PWM logos, we upload a file (aligned_0,0.001,0.0003_filter3_low.txt or aligned_0,0.001,0.0003_filter3_high.txt), and choose Composition as 'D. melanogaster (43%)' as GC content. 
 ```
+
+5. Multi-module CNN models are trained through following steps. Let's take MYC in cell type GM12878 for an example. 
+
+```sh
+cd codes_ENCODE
+python train_CNN_ENCODE.py canonical --steps train,test --tfs MYC --lr_file lr_file --tf_len 10 --celltype gm12878
+
+``` 
 
 ## Project home page
 

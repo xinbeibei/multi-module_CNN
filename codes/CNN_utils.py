@@ -805,7 +805,7 @@ def update_each_filter_seqs_append_N(counts, all_input_seqs, filter_id, x, a):
 def fitler2motif(outdir, param_list, onehot_train, seqs_train, y_train, \
          get_meme=True, align_to_one_filter=False, filter_id=4, use_revcomp=True):
     '''given a model, onehot data, output the PWM each motif scanner provide.'''
-    '''in figure 5C, we used CNN (canonical) models'''
+    '''in figure 5D, we used CNN (canonical, RCaugmented) models'''
     np.random.seed(1)
     K.set_learning_phase(0)    
     params = [line.rstrip().split('\t')[0].split(',') for line in open(param_list).readlines()]
