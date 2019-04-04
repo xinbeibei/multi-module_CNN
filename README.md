@@ -15,9 +15,9 @@ Based on well-trained models, we evaluated four interpretation methods: Gradient
 The pipeline requires:
 
 * python 2.7
-* DeepLIFT (citation) version at https://github.com/kundajelab/deeplift/tree/v0.6.6.2-alpha
-* seq2logo
-* Weblogo2
+* DeepLIFT (Shrikumar et al., 2017) version at https://github.com/kundajelab/deeplift/tree/v0.6.6.2-alpha
+* seq2logo (Thomsen and Neilson, 2012) at http://www.cbs.dtu.dk/biotools/Seq2Logo/
+* matrix-clustering (Castro-Mondragon et al., 2017) at https://rsat01.biologie.ens.fr/rsat/matrix-clustering_form.cgi
 
 ## Tutorial
 
@@ -50,6 +50,11 @@ python interpret_CNN_SELEX.py RCmodel ISM --interpret_file ../data/interpret_seq
 Note that the .h5 file in --interpret_file only contains one sequence for interpretation. For ISM method, the sequence to be interpret could be a long sequence, for example, Svb enhancer as prepared in ../data/long_low_affinity_WT_short_seqs.h5. 
 
 The fourth interpretation method DeepLIFT was implemented separately.
+```sh
+cd codes_deeplift
+python train_CNN_SELEX_deeplift.py double --steps train --tfs Ubx --lr_file lr_file
+python train_CNN_SELEX_deeplift.py double --steps interpret --tfs Ubx --lr_file lr_file --interpret_file ../data/interpret_seq/ATGATTTATTACCC.h5
+```
 
 3. Free energy change of different mutations on the Svb enhancer. 
 
@@ -88,7 +93,7 @@ python ../../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_low.txt align
 python ../../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_high.txt aligned_0,0.001,0.0003_filter3_high_YRcodes.txt
 
 # Fourth step: visualization
-We used the WebLogo 3 online website (http://weblogo.threeplusone.com/create.cgi) to plot PWM and YR logos. For PWM logos, we upload a file (aligned_0,0.001,0.0003_filter3_low.txt or aligned_0,0.001,0.0003_filter3_high.txt), and choose Composition as 'D. melanogaster (43%)' as GC content. 
+We used the WebLogo 3 (Crooks et al., 2004) online website (http://weblogo.threeplusone.com/create.cgi) to plot PWM and YR logos. For PWM logos, we upload a file (aligned_0,0.001,0.0003_filter3_low.txt or aligned_0,0.001,0.0003_filter3_high.txt), and choose Composition as 'D. melanogaster (43%)' as GC content. 
 ```
 
 5. Multi-module CNN models are trained through following steps. Let's take MYC in cell type GM12878 for an example. 
@@ -96,7 +101,6 @@ We used the WebLogo 3 online website (http://weblogo.threeplusone.com/create.cgi
 ```sh
 cd codes_ENCODE
 python train_CNN_ENCODE.py canonical --steps train,test --tfs MYC --lr_file lr_file --tf_len 10 --celltype gm12878
-
 ``` 
 
 ## Project home page
@@ -105,3 +109,10 @@ For information on teh source tree, examples, isuses, and pull requests, see
 
 	https://github.com/xinbeibei/multi-module_CNN
 
+
+## References
+
+Castro-Mondragon, J.A., et al. RSAT matrix-clustering: dynamic exploration and redundancy reduction of transcription factor binding motif collections. Nucleic acids research 2017;45(13):e119-e119.
+Crooks, G.E., et al. WebLogo: a sequence logo generator. Genome research 2004;14(6):1188-1190.
+Shrikumar, A., Greenside, P. and Kundaje, A. Learning important features through propagating activation differences. arXiv preprint arXiv:1704.02685 2017.
+Thomsen, M.C. and Nielsen, M. Seq2Logo: a method for construction and visualization of amino acid binding motifs and sequence profiles including sequence weighting, pseudo counts and two-sided representation of amino acid enrichment and depletion. Nucleic acids research 2012;40(Web Server issue):W281-287.
