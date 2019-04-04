@@ -81,7 +81,7 @@ matrix-clustering -v 1 -max_matrices 300 -matrix ubx filters_0,0.001,0.0003.meme
 sort -nk7 ./matrix-clustering_tables/pairwise_compa_matrix_descriptions.tab > test
 
 # Second step: set align_to_one_filter=True, and get aligned sequences based on one filter
-cd ../../../../codes
+cd ../../../codes
 python train_CNN_SELEX.py RCaugmented --steps align --tfs Ubx
 cd ../out/SELEX_RCaugmented/Ubx
 sort -nk2 aligned_0,0.001,0.0003_filter3.txt > aligned_0,0.001,0.0003_filter3_sorted.txt
@@ -89,8 +89,8 @@ sort -nk2 aligned_0,0.001,0.0003_filter3.txt > aligned_0,0.001,0.0003_filter3_so
 # Third step: YR coding of high-affinity and low-affinity BSS
 head -n10000 aligned_0,0.001,0.0003_filter3_sorted.txt | awk '{print $1}' - | sed s/N/n/g - > aligned_0,0.001,0.0003_filter3_low.txt
 tail -n10000 aligned_0,0.001,0.0003_filter3_sorted.txt | awk '{print $1}' - | sed s/N/n/g - > aligned_0,0.001,0.0003_filter3_high.txt
-python ../../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_low.txt aligned_0,0.001,0.0003_filter3_low_YRcodes.txt
-python ../../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_high.txt aligned_0,0.001,0.0003_filter3_high_YRcodes.txt
+python ../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_low.txt aligned_0,0.001,0.0003_filter3_low_YRcodes.txt
+python ../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_high.txt aligned_0,0.001,0.0003_filter3_high_YRcodes.txt
 
 # Fourth step: visualization
 We used the WebLogo 3 (Crooks et al., 2004) online website (http://weblogo.threeplusone.com/create.cgi) to plot PWM and YR logos. For PWM logos, we upload a file (aligned_0,0.001,0.0003_filter3_low.txt or aligned_0,0.001,0.0003_filter3_high.txt), and choose Composition as 'D. melanogaster (43%)' as GC content. 
