@@ -96,12 +96,14 @@ python ../../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_high.txt alig
 We used the WebLogo 3 (Crooks et al., 2004) online website (http://weblogo.threeplusone.com/create.cgi) to plot PWM and YR logos. For PWM logos, we upload a file (aligned_0,0.001,0.0003_filter3_low.txt or aligned_0,0.001,0.0003_filter3_high.txt), and choose Composition as 'D. melanogaster (43%)' as GC content. 
 ```
 
-5. Multi-module CNN models are trained through following steps. Let's take MYC in cell type GM12878 for an example. 
+5. Multi-module CNN models are trained through following steps. Let's take MYC in cell type GM12878 for an example. The .h5 data for other TFs are available upon request due to storage limit.
 
 ```sh
 cd codes_ENCODE
 python train_CNN_ENCODE.py canonical --steps train,test --tfs MYC --lr_file lr_file --tf_len 10 --celltype gm12878
 ``` 
+
+If you have any question about this tutorial, feel free to start an GitHub issue or send an email to Beibei Xin at bxin@usc.edu.
 
 ## Project home page
 
