@@ -1,8 +1,3 @@
-"""
-Created on Sun Jun 26 19:42:06 2016
-
-@author: satyanar
-"""
 import h5py 
 import numpy as np 
 from collections import OrderedDict 

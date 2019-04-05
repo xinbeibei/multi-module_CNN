@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jan 17 11:38:38 2019
-
-@author: bxin
-"""
 import sys
 '''This file aims to collect performance on test data with the optimal parameter set for each TF'''
 mode = sys.argv[1]
