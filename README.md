@@ -33,15 +33,18 @@ python test.py Scr ../data/SELEX_aligned/Scr/encoded ../data/SELEX_aligned/Scr/i
 python summarize.py Scr ../data/SELEX_aligned/Scr/output summarize.R ../data/SELEX_aligned/Scr/result feature_list
 ```
 
-1. Build four sequence-based CNN models on SELEX-seq data. Here we took CNN (RC model) for an example. After running the following command, the top 3 hyperparameter settings would be selected and their corresponding CNN models and training/testing performance would be saved. Note that the prior generated hyperparameter list is in lr_file. 
+2. Build four sequence-based CNN models on SELEX-seq data. Here we took CNN (RC model) for an example. After running the following command, the top 3 hyperparameter settings would be selected and their corresponding CNN models and training/testing performance would be saved. Note that the prior generated hyperparameter list is in lr_file. 
 
 ```sh
+# Data preparation: input data are .h5 format. if starting from text file, with first and second column indicate sequences and response (i.e. relative affinity), use the following command to prepare .h5 data. 
 cd codes
+python generateh5files.py TEXTFILE
+
 # model options are canonical/RCaugmented/RCmodel/double.
 python train_CNN_SELEX.py RCmodel --steps train,test --tfs Scr,Ubx,Antp,Pb,Dfd,AbdA,AbdB,Lab --lr_file lr_file 
 ```
 
-2. Interpret well-trained models with Gradient*input, DeconvNet, and ISM. For example, we could use following commands to obtain unit-resolution importance matrix of ATGATTTATTACCC (high-affinity BS of Exd-Ubx) interpreted by CNN (RC model) of Exd-Ubx.
+3. Interpret well-trained models with Gradient*input, DeconvNet, and ISM. For example, we could use following commands to obtain unit-resolution importance matrix of ATGATTTATTACCC (high-affinity BS of Exd-Ubx) interpreted by CNN (RC model) of Exd-Ubx.
  
 ```sh
 python interpret_CNN_SELEX.py RCmodel ISM --interpret_file ../data/interpret_seq/ATGATTTATTACCC.h5 --tfs Ubx --lr_file ../out/SELEX_RCmodel/Ubx/train_perf.txt
@@ -56,7 +59,7 @@ python train_CNN_SELEX_deeplift.py double --steps train --tfs Ubx --lr_file lr_f
 python train_CNN_SELEX_deeplift.py double --steps interpret --tfs Ubx --lr_file lr_file --interpret_file ../data/interpret_seq/ATGATTTATTACCC.h5
 ```
 
-3. Free energy change of different mutations on the Svb enhancer. 
+4. Free energy change of different mutations on the Svb enhancer. 
 
 ```sh
 for seq in WT mut1 mut2 mut3 mut12 site1 site2 site3A site3B site3C site3D site3E
@@ -70,7 +73,7 @@ done
 done 
 ```
 
-4. After training a CNN model, align training data with one certain motif scanner, and create either a position weight matrix (PWM) or YR logo. Here we use Exd-Ubx and CNN (canonical, RCaugmented) model as an example. 
+5. After training a CNN model, align training data with one certain motif scanner, and create either a position weight matrix (PWM) or YR logo. Here we use Exd-Ubx and CNN (canonical, RCaugmented) model as an example. 
 
 ```sh
 # First step is to find out which motif scanner has largest information content.
@@ -96,7 +99,7 @@ python ../../../codes/YRcodes.py aligned_0,0.001,0.0003_filter3_high.txt aligned
 We used the WebLogo 3 (Crooks et al., 2004) online website (http://weblogo.threeplusone.com/create.cgi) to plot PWM and YR logos. For PWM logos, we upload a file (aligned_0,0.001,0.0003_filter3_low.txt or aligned_0,0.001,0.0003_filter3_high.txt), and choose Composition as 'D. melanogaster (43%)' as GC content. 
 ```
 
-5. Multi-module CNN models are trained through following steps. Let's take MYC in cell type GM12878 for an example. The .h5 data for other TFs are available upon request due to storage limit.
+6. Multi-module CNN models are trained through following steps. Let's take MYC in cell type GM12878 for an example. The .h5 data for other TFs are available upon request due to storage limit.
 
 ```sh
 cd codes_ENCODE
