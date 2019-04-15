@@ -117,10 +117,10 @@ For information on teh source tree, examples, isuses, and pull requests, see
 
 ## References
 
-Castro-Mondragon, J.A., et al. RSAT matrix-clustering: dynamic exploration and redundancy reduction of transcription factor binding motif collections. Nucleic acids research 2017;45(13):e119-e119.
+Castro-Mondragon J.A. et al. (2017) RSAT matrix-clustering: dynamic exploration and redundancy reduction of transcription factor binding motif collections. Nucleic Acids Res., 45, e119-e119.
 
-Crooks, G.E., et al. WebLogo: a sequence logo generator. Genome research 2004;14(6):1188-1190.
+Crooks G.E. et al. (2004) WebLogo: a sequence logo generator. Genome Res., 14, 1188-1190.
 
-Shrikumar, A., Greenside, P. and Kundaje, A. Learning important features through propagating activation differences. arXiv preprint arXiv:1704.02685 2017.
+Shrikumar A. et al. (2017a) Learning important features through propagating activation differences. arXiv preprint arXiv:1704.02685.
 
-Thomsen, M.C. and Nielsen, M. Seq2Logo: a method for construction and visualization of amino acid binding motifs and sequence profiles including sequence weighting, pseudo counts and two-sided representation of amino acid enrichment and depletion. Nucleic acids research 2012;40(Web Server issue):W281-287.
+Thomsen M.C. and Nielsen M. (2012) Seq2Logo: a method for construction and visualization of amino acid binding motifs and sequence profiles including sequence weighting, pseudo counts and two-sided representation of amino acid enrichment and depletion. Nucleic Acids Res., 40, W281-W287.
